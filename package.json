@@ -2,7 +2,8 @@
   "name": "binary-pixel-map",
   "version": "1.0.0",
   "description": "A library for creating and editing a binary 2D pixel map",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "typings": "typings/index.d.ts",
   "repository": "https://github.com/Mrtenz/pixel-map.git",
   "author": "Maarten Zuidhoorn <maarten@zuidhoorn.com>",
   "license": "MIT",
@@ -10,7 +11,7 @@
     "tscheck": "tsc --noEmit --project tsconfig.json",
     "tslint": "tslint --project .",
     "prettier:diff": "prettier --write --config ./.prettierrc --list-different 'src/**/*.ts'",
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./lib",
     "build": "tsc",
     "prepublishOnly": "yarn run clean && yarn run build"
   },

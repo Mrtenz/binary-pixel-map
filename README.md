@@ -4,6 +4,12 @@ A library written in TypeScript for creating and editing a binary 2D pixel map, 
 
 This library is based on [`oled-js`](https://github.com/noopkat/oled-js) and [`oled-font-5x7`](https://github.com/noopkat/oled-font-5x7) by noopkat.
 
+## Installation
+
+```
+yarn add binary-pixel-map
+```
+
 ## Usage
 
 ```typescript

@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./lib/",
+    "declarationDir": "./typings/",
+    "declaration": true,
     "baseUrl": "./src/",
     "sourceMap": true,
     "strictNullChecks": true,
@@ -8,7 +10,6 @@
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "es2017",
-    "allowJs": true,
     "noEmitOnError": true,
     "strict": true,
     "experimentalDecorators": true
