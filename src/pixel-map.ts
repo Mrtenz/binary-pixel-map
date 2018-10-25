@@ -28,6 +28,13 @@ export class PixelMap {
   }
 
   /**
+   * Get all pixels.
+   */
+  getAll (): PixelStatus[][] {
+    return this.pixels;
+  }
+
+  /**
    * Set an individual pixel.
    * @param x
    * @param y

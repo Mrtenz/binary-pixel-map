@@ -68,6 +68,14 @@ get(x: number, y: number): PixelStatus;
 
 Get the value of the pixel at [x, y].
 
+#### getAll
+
+```typescript
+getAll(): PixelStatus[][];
+```
+
+Get all pixels.
+
 #### set
 
 ```typescript
