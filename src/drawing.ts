@@ -156,7 +156,9 @@ export const text = (
   let cursorY = y;
 
   for (let wordIndex = 0; wordIndex < words.length; wordIndex++) {
-    words[wordIndex] += ' ';
+    if (wordIndex + 1 > words.length) {
+      words[wordIndex] += ' ';
+    }
 
     const word = words[wordIndex].split('');
     const compare = font.width * size * word.length + size * (words.length - 1);
