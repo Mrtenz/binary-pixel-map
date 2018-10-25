@@ -2,7 +2,7 @@
   "name": "binary-pixel-map",
   "version": "1.0.0",
   "description": "A library for creating and editing a binary 2D pixel map",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "typings": "typings/index.d.ts",
   "repository": "https://github.com/Mrtenz/pixel-map.git",
   "author": "Maarten Zuidhoorn <maarten@zuidhoorn.com>",
