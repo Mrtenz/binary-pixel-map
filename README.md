@@ -124,6 +124,22 @@ text(x: number, y: number, content: string, size: number = 1, spacing: number = 
 
 Draw text at [x, y] with size `size`. The standard size (`size = 1`) for letters is 5 x 7.
 
+#### copy
+
+```typescript
+copy(from: PixelMap, x: number = 0, y: number = 0): void;
+```
+
+Copy another pixel map onto the current pixel map at [x, y].
+
+#### image
+
+```typescript
+async image(path: string | Buffer, x: number = 0, y: number = 0, maxWidth?: number, maxHeight?: number): Promise<void>;
+```
+
+Copy an image onto the pixel map. `path` can be a file path or image buffer. Supported file types are: PNG, JPEG, WebP, GIF, SVG and TIFF.
+
 #### toArray
 
 ```typescript

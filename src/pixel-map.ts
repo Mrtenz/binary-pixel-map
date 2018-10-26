@@ -1,5 +1,6 @@
 import { Pixel, PixelStatus } from './pixel';
 import * as draw from './drawing';
+import { loadImage } from './image';
 
 export class PixelMap {
   readonly width: number;
@@ -11,7 +12,7 @@ export class PixelMap {
    * @param width
    * @param height
    */
-  constructor (width: number, height: number) {
+  constructor(width: number, height: number) {
     this.width = width;
     this.height = height;
 
@@ -23,14 +24,14 @@ export class PixelMap {
    * @param x
    * @param y
    */
-  get (x: number, y: number): PixelStatus {
+  get(x: number, y: number): PixelStatus {
     return this.pixels[x][y];
   }
 
   /**
    * Get all pixels.
    */
-  getAll (): PixelStatus[][] {
+  getAll(): PixelStatus[][] {
     return this.pixels;
   }
 
@@ -40,14 +41,14 @@ export class PixelMap {
    * @param y
    * @param status
    */
-  set (x: number, y: number, status: PixelStatus): void {
+  set(x: number, y: number, status: PixelStatus): void {
     this.pixels[x][y] = status;
   }
 
   /**
    * Clear the map.
    */
-  clear (): void {
+  clear(): void {
     this.fill(false);
   }
 
@@ -55,7 +56,7 @@ export class PixelMap {
    * Fill the map with pixels.
    * @param status
    */
-  fill (status: PixelStatus) {
+  fill(status: PixelStatus): void {
     this.pixels = [];
 
     for (let x = 0; x < this.width; x++) {
@@ -74,7 +75,7 @@ export class PixelMap {
    * @param y1
    * @param status
    */
-  line (x0: number, y0: number, x1: number, y1: number, status: PixelStatus = Pixel.ON) {
+  line(x0: number, y0: number, x1: number, y1: number, status: PixelStatus = Pixel.ON): void {
     draw.line(this, x0, y0, x1, y1, status);
   }
 
@@ -87,14 +88,14 @@ export class PixelMap {
    * @param outline
    * @param status
    */
-  rectangle (
+  rectangle(
     x: number,
     y: number,
     width: number,
     height: number,
     outline: boolean = false,
     status: PixelStatus = Pixel.ON
-  ) {
+  ): void {
     draw.rectangle(this, x, y, width, height, outline, status);
   }
 
@@ -107,14 +108,53 @@ export class PixelMap {
    * @param spacing
    * @param wrap
    */
-  text (x: number, y: number, content: string, size: number = 1, spacing: number = 2, wrap = true) {
+  text(
+    x: number,
+    y: number,
+    content: string,
+    size: number = 1,
+    spacing: number = 2,
+    wrap = true
+  ): void {
     draw.text(this, x, y, content, size, spacing, wrap);
+  }
+
+  /**
+   * Copy a pixel map onto this pixel map.
+   * @param from
+   * @param x
+   * @param y
+   */
+  copy(from: PixelMap, x: number = 0, y: number = 0): void {
+    draw.copy(from, this, x, y);
+  }
+
+  /**
+   * Copy an image onto the pixel map.
+   * @param path
+   * @param x
+   * @param y
+   * @param maxWidth
+   * @param maxHeight
+   */
+  async image(
+    path: string | Buffer,
+    x: number = 0,
+    y: number = 0,
+    maxWidth?: number,
+    maxHeight?: number
+  ): Promise<void> {
+    maxWidth = maxWidth || this.width;
+    maxHeight = maxHeight || this.height;
+
+    const imageMap = await loadImage(path, maxWidth, maxHeight);
+    this.copy(imageMap, x, y);
   }
 
   /**
    * Format the Pixel map as an array of all pixels.
    */
-  toArray (): PixelStatus[] {
+  toArray(): PixelStatus[] {
     const array: PixelStatus[] = [];
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
@@ -127,7 +167,7 @@ export class PixelMap {
   /**
    * Format the Pixel map as a string.
    */
-  toString () {
+  toString(): string {
     const prefix = 'PixelMap { ';
     const padding = prefix.length;
 

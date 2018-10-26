@@ -189,3 +189,18 @@ export const text = (
     }
   }
 };
+
+/**
+ * Copy one pixel map onto another pixel map.
+ * @param from
+ * @param to
+ * @param x
+ * @param y
+ */
+export const copy = (from: PixelMap, to: PixelMap, x: number = 0, y: number = 0) => {
+  from.getAll().forEach((row, fromX) => {
+    row.forEach((pixel, fromY) => {
+      to.set(fromX + x, fromY + y, pixel);
+    });
+  });
+};
