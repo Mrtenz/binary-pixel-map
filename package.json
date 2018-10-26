@@ -1,6 +1,6 @@
 {
   "name": "binary-pixel-map",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A library for creating and editing a binary 2D pixel map",
   "main": "lib/index.js",
   "typings": "typings/index.d.ts",
