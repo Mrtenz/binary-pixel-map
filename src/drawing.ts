@@ -198,8 +198,8 @@ export const text = (
  * @param y
  */
 export const copy = (from: PixelMap, to: PixelMap, x: number = 0, y: number = 0) => {
-  from.getAll().forEach((row, fromX) => {
-    row.forEach((pixel, fromY) => {
+  from.getAll().forEach((row, fromY) => {
+    row.forEach((pixel, fromX) => {
       to.set(fromX + x, fromY + y, pixel);
     });
   });
