@@ -16,7 +16,7 @@
     "prepublishOnly": "yarn run clean && yarn run build"
   },
   "dependencies": {
-    "sharp": "^0.21.0"
+    "sharp": "^0.30.5"
   },
   "devDependencies": {
     "@types/chai": "^4.1.6",
